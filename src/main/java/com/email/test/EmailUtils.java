@@ -28,9 +28,6 @@ public class EmailUtils {
             String host = "smtp.qq.com";
 
             Properties props = new Properties();
-//            props.put("mail.smtp.host", host);
-//            props.put("mail.smtp.auth", "true");
-
             props.put("mail.transport.protocol", "smtp");// 连接协议
 
             props.put("mail.smtp.host", "smtp.qq.com");// 主机名
@@ -96,7 +93,7 @@ public class EmailUtils {
     }
 
     public static void main(String[] args) {
-        EmailUtils.sendMail("hello", "haitaow@hpe.com", "hello world" ,
+        EmailUtils.sendMail("hello", "152.com", "hello world" ,
                 "C://Users//wahaitao//Desktop//出差报销.xlsx");
     }
 
