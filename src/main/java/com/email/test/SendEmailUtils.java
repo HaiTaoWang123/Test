@@ -270,5 +270,4 @@ public class SendEmailUtils {
             return new PasswordAuthentication(username, password);
         }
     }
-
 }
