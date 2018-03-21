@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <!-- <property name="location" value="classpath:mail.properties"/> -->
+        <property name="location" value="file:mail.properties"/>
+    </bean>
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="protocol" value="${email.protocol}"/>
+        <property name="host" value="${email.host}"/>
+        <property name="port" value="${email.port}"/>
+        <property name="username" value="${email.username}"/>
+        <property name="password" value="${email.password}"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.host">${email.host}</prop>
+                <prop key="mail.transport.protocol">${email.protocol}</prop>
+                <prop key="mail.${email.protocol}.auth">${email.auth}</prop>
+                <prop key="mail.${email.protocol}.socketFactory.class">${email.socketFactory}</prop>
+                <prop key="mail.${email.protocol}.port">${email.port}</prop>
+                <prop key="mail.${email.protocol}.socketFactory.port">${email.port}</prop>
+                <prop key="mail.${email.protocol}.timeout">${email.timeout}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="EmailService" class="com.email.test.EmailServiceImpl">
+        <property name="javaMailSender" ref="javaMailSender"/>
+        <property name="systemEmail" value="${email.systemEmail}"/>
+    </bean>
+</beans>

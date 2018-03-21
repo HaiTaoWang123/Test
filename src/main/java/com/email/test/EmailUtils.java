@@ -32,10 +32,17 @@ public class EmailUtils {
 
             props.put("mail.smtp.host", "smtp.qq.com");// 主机名
 
-            props.put("mail.smtp.port", 465);// 端口号
-            props.put("mail.smtp.socketFactory.port", 465);
+//            props.setProperty("proxySet", "true");
+//            props.setProperty("socksProxyHost", "web-proxy.atl.hp.com");
+//            props.setProperty("socksProxyPort", "8080");
+
+            props.put("mail.smtp.port", 587);// 端口号
+            props.put("mail.smtp.socketFactory.port", 587);
             props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
+            props.put("proxySet", "true");
+            props.put("socksProxyHost", "web-proxy.atl.hp.com");
+            props.put("socksProxyPort", "8080");
             props.put("mail.smtp.auth", "true");
 
             props.put("mail.smtp.ssl.enable", "true");//设置是否使用ssl安全连接  ---一般都使用
@@ -93,8 +100,8 @@ public class EmailUtils {
     }
 
     public static void main(String[] args) {
-        EmailUtils.sendMail("hello", "152.com", "hello world" ,
-                "C://Users//wahaitao//Desktop//出差报销.xlsx");
+        EmailUtils.sendMail("hello", "haitaow@hpe.com", "hello world" ,
+                "C://Users//wahaitao//Desktop//New Microsoft Excel Worksheet.xlsx");
     }
 
 }
